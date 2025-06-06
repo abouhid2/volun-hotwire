@@ -1,0 +1,19 @@
+<div class="bg-white shadow overflow-hidden sm:rounded-lg">
+  <div class="px-4 py-5 sm:px-6 flex justify-between items-center">
+    <div>
+      <h1 class="text-2xl font-bold text-gray-900">Events for <%= @entity.name %></h1>
+      <%= link_to "Back to Entity", entity_path(@entity), class: "mt-1 text-sm text-indigo-600 hover:text-indigo-900" %>
+    </div>
+    <%= link_to "New Event", new_entity_event_path(@entity), class: "inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700", data: { turbo_frame: "new_event" } %>
+  </div>
+
+  <%= turbo_frame_tag "new_event" %>
+
+  <div class="bg-white shadow overflow-hidden sm:rounded-lg">
+    <%= turbo_frame_tag "events" do %>
+      <div class="grid grid-cols-1 gap-4 p-4">
+        <%= render @events %>
+      </div>
+    <% end %>
+  </div>
+</div>

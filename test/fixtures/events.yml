@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  date: 2025-06-06 13:54:32
+  location: MyString
+  entity: one
+  deleted_at: 2025-06-06 13:54:32
+  time: 2025-06-06 13:54:32
+
+two:
+  title: MyString
+  description: MyText
+  date: 2025-06-06 13:54:32
+  location: MyString
+  entity: two
+  deleted_at: 2025-06-06 13:54:32
+  time: 2025-06-06 13:54:32

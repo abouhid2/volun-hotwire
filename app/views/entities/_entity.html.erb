@@ -1,0 +1,35 @@
+<%= turbo_frame_tag entity do %>
+  <div class="bg-white overflow-hidden shadow rounded-lg divide-y divide-gray-200">
+    <div class="px-4 py-5 sm:p-6">
+      <div class="flex items-center justify-between">
+        <div class="flex-1 min-w-0">
+          <h3 class="text-lg font-medium leading-6 text-gray-900 truncate">
+            <%= link_to entity.name, entity_path(entity), data: { turbo_frame: "_top" } %>
+          </h3>
+          <p class="mt-1 text-sm text-gray-500 truncate"><%= entity.email %></p>
+        </div>
+        <div class="flex-shrink-0 flex items-center space-x-2">
+          <%= link_to edit_entity_path(entity), class: "text-indigo-600 hover:text-indigo-900" do %>
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+            </svg>
+          <% end %>
+          <%= button_to entity_path(entity), method: :delete, class: "text-red-600 hover:text-red-900" do %>
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+            </svg>
+          <% end %>
+        </div>
+      </div>
+      <div class="mt-4">
+        <p class="text-sm text-gray-500"><%= truncate(entity.description, length: 150) %></p>
+      </div>
+      <div class="mt-4">
+        <%= link_to entity_events_path(entity), class: "text-sm font-medium text-indigo-600 hover:text-indigo-500", data: { turbo_frame: "_top" } do %>
+          View Events
+          <span class="ml-1">→</span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %> 
