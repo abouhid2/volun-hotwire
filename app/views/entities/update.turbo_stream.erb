@@ -1,4 +1,0 @@
-<%= turbo_stream.replace @entity do %>
-  <%= render @entity %>
-<% end %>
-<%= turbo_stream.append "flash", partial: "layouts/flash", locals: { flash: flash } %> 
