@@ -1,3 +1,15 @@
-<%= turbo_stream.prepend "entities", @entity %>
-<%= turbo_stream.update "new_entity", "" %>
+<%= turbo_stream.prepend "entities" do %>
+  <%= render @entity %>
+<% end %>
+
+<%= turbo_stream.update "entity_counter" do %>
+  <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">
+    Total: <%= Entity.active.count %>
+  </span>
+<% end %>
+
+<%= turbo_stream.update "new_entity" do %>
+  <%= link_to "New Entity", new_entity_path, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" %>
+<% end %>
+
 <%= turbo_stream.append "flash", partial: "layouts/flash", locals: { flash: flash } %> 

@@ -35,3 +35,5 @@
 /tmp
 /test
 /bin
+/app/assets/builds/*
+!/app/assets/builds/.keep
