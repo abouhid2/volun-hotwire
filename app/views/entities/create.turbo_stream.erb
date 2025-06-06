@@ -1,0 +1,3 @@
+<%= turbo_stream.prepend "entities", @entity %>
+<%= turbo_stream.update "new_entity", "" %>
+<%= turbo_stream.append "flash", partial: "layouts/flash", locals: { flash: flash } %> 

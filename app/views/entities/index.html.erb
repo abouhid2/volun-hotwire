@@ -1,0 +1,12 @@
+<div class="container mx-auto px-4 py-8">
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="text-3xl font-bold text-gray-800">Entities</h1>
+    <%= link_to "New Entity", new_entity_path, class: "bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg inline-flex items-center", data: { turbo_frame: "new_entity" } %>
+  </div>
+
+  <%= turbo_frame_tag "new_entity" %>
+
+  <div id="entities" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <%= render @entities %>
+  </div>
+</div> 

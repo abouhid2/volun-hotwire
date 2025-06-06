@@ -1,0 +1,11 @@
+<%= turbo_frame_tag @entity do %>
+  <div class="bg-white rounded-lg shadow-md p-6">
+    <h2 class="text-2xl font-bold text-gray-800 mb-4">Edit Entity</h2>
+    
+    <%= render "form", entity: @entity %>
+    
+    <div class="mt-4 text-right">
+      <%= link_to "Cancel", @entity, class: "text-gray-500 hover:text-gray-700" %>
+    </div>
+  </div>
+<% end %> 
