@@ -10,35 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_06_165432) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "entities", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.string "logo_url"
-    t.string "website"
-    t.string "address"
-    t.string "phone"
-    t.string "email"
-    t.datetime "deleted_at"
+ActiveRecord::Schema[8.0].define(version: 2025_07_15_195658) do
+  create_table "messages", force: :cascade do |t|
+    t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "events", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.datetime "date"
-    t.string "location"
-    t.bigint "entity_id", null: false
-    t.datetime "deleted_at"
-    t.datetime "time"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["entity_id"], name: "index_events_on_entity_id"
-  end
-
-  add_foreign_key "events", "entities"
 end

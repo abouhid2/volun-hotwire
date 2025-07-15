@@ -1,0 +1,31 @@
+<!-- 29. The form_with helper automatically uses Turbo by default in Rails 7+ -->
+<%= form_with(model: message, class: "contents") do |form| %>
+  <% if message.errors.any? %>
+    <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-md mt-3">
+      <h2><%= pluralize(message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+      <ul class="list-disc ml-6">
+        <% message.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="my-5">
+    <!-- 30. Improved form field with better labeling -->
+    <%= form.label :content, "Message Content", class: "block text-gray-700 font-medium mb-1" %>
+    <%= form.text_area :content, 
+                      rows: 4, 
+                      placeholder: "Type your message here...",
+                      class: "block w-full px-3 py-2 mt-1 text-gray-700 border rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500" %>
+  </div>
+
+  <div class="flex items-center justify-between mt-4">
+    <!-- 31. Cancel button to return to messages list -->
+    <%= link_to "Cancel", messages_path, class: "text-gray-600 hover:text-gray-900" %>
+    
+    <!-- 32. Submit button with improved styling -->
+    <%= form.submit class: "px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2" %>
+  </div>
+<% end %>

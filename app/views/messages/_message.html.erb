@@ -1,0 +1,15 @@
+<div id="<%= dom_id message %>" class="w-full flex flex-col sm:flex-row justify-between items-start p-4 my-2 bg-white rounded-lg shadow">
+  <div class="mb-4 sm:mb-0">
+    <p class="text-gray-700"><%= message.content %></p>
+    <p class="text-xs text-gray-500 mt-1">
+      Posted <%= time_ago_in_words(message.created_at) %> ago
+    </p>
+  </div>
+  
+  <div class="flex space-x-2">
+    <%= link_to "Show", message, class: "text-sm rounded-md px-2 py-1 bg-gray-100 hover:bg-gray-200" %>
+    <%= link_to "Edit", edit_message_path(message), class: "text-sm rounded-md px-2 py-1 bg-gray-100 hover:bg-gray-200" %>
+    <%= button_to "Delete", message, method: :delete, class: "text-sm rounded-md px-2 py-1 text-white bg-red-600 hover:bg-red-500", 
+        form: { data: { turbo_confirm: "Are you sure?" } } %>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+<!-- 17. This template is rendered when a new message is created with Turbo -->
+<!-- It tells the browser to prepend the new message to the messages container -->
+<%= turbo_stream.prepend "messages" do %>
+  <%= render @message %>
+<% end %>
+
+<!-- 18. Update the notice to show a success message -->
+<%= turbo_stream.update "notice" do %>
+  <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block">
+    Message was successfully created.
+  </p>
+<% end %> 

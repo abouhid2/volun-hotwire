@@ -1,0 +1,28 @@
+<% content_for :title, "Messages" %>
+
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <div class="flex justify-between items-center mb-6">
+    <h1 class="font-bold text-4xl">Messages</h1>
+    <%= link_to "New message", new_message_path, class: "rounded-md px-3.5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white block font-medium" %>
+  </div>
+
+  <!-- 4. This is where we subscribe to the Turbo Stream -->
+  <!-- When a new message is created, Turbo will automatically update this section -->
+  <%= turbo_stream_from :messages %>
+  
+  <div id="messages" class="min-w-full divide-y divide-gray-200 space-y-5">
+    <!-- 5. The messages are rendered here -->
+    <!-- The ID "messages" is important as it's the target for Turbo Stream updates -->
+    <% @messages.each do |message| %>
+      <%= render message %>
+    <% end %>
+    
+    <% if @messages.empty? %>
+      <p class="text-center my-10">No messages found.</p>
+    <% end %>
+  </div>
+</div>

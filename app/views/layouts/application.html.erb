@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Volun Hotwire" %></title>
+    <title><%= content_for(:title) || "Hotwire Demo" %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="mobile-web-app-capable" content="yes">
@@ -10,21 +10,47 @@
 
     <%= yield :head %>
 
-    <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
-    <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
-
     <link rel="icon" href="/icon.png" type="image/png">
     <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="apple-touch-icon" href="/icon.png">
 
-    <%# Includes all stylesheet files in app/assets/stylesheets %>
-    <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <!-- 23. Include the Tailwind CSS -->
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <!-- 24. Include the JavaScript with Turbo and Stimulus -->
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <%= yield %>
-    </main>
+  <body class="bg-gray-50">
+    <div class="container mx-auto mt-10 px-5">
+      <!-- 25. Header section -->
+      <header class="mb-8">
+        <h1 class="text-3xl font-bold text-center text-blue-600">
+          Hotwire Demo - Real-time Messages
+        </h1>
+        <p class="text-center text-gray-600 mt-2">
+          A simple demo of Hotwire with Turbo Streams and ActionCable
+        </p>
+      </header>
+      
+      <!-- 26. Notice container with a specific ID for Turbo Stream updates -->
+      <div id="notice" class="mb-4">
+        <% if notice.present? %>
+          <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-md inline-block"><%= notice %></p>
+        <% end %>
+      </div>
+      
+      <!-- 27. Main content -->
+      <main class="bg-white p-6 rounded-lg shadow-md">
+        <%= yield %>
+      </main>
+      
+      <!-- 28. Footer with explanation -->
+      <footer class="mt-10 text-center text-gray-500 text-sm">
+        <p>This demo showcases Hotwire's real-time capabilities.</p>
+        <p>Try opening this page in multiple browser windows to see changes propagate instantly!</p>
+      </footer>
+    </div>
   </body>
 </html>
