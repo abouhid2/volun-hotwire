@@ -45,7 +45,7 @@ gem "thruster", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-gem "redis", "~> 4.0"
+gem "redis", "~> 5.4"
 gem "paranoia"
 
 group :development, :test do
